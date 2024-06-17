@@ -1,0 +1,127 @@
+.nav-item {
+    min-width: 15% !important;
+}
+input.btn {
+    background-color: #fead1d;
+    font-size: 1.5rem;
+}
+input.btn:hover {
+    background-color: var(--red);
+    color: #fff;
+}
+.option-btn, .delete-btn {
+    padding: 0.5rem 1rem;
+    margin-top: 1rem;
+
+}
+.add-form {
+    max-width: 37rem;
+    background-color: var(--bg-color);
+    border-radius: .5rem;
+    padding: 2rem;
+    margin: 0 auto;
+    margin: 2rem auto;
+}
+
+.add-form h3 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #e28800;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.add-form .box {
+    text-transform: none;
+    padding: 0.5rem 1.4rem;
+    font-size: 1.2rem !important;
+    color: var(--black);
+    border-radius: .5rem;
+    background-color: var(--white);
+    margin: 0.5rem 0;
+    width: 100%;
+}
+
+.display-table table {
+    width: 100%;
+    text-align: center;
+}
+
+
+.display-table table thead th {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.display-table table td {
+    padding: 0.5rem;
+    font-size: 1.2rem;
+    color: var(--black);
+
+}
+
+.display-table table td:first-child {
+    padding: 0;
+}
+
+.display-table table tr:nth-child(even) {
+    background-color: var(--bg-color);
+}
+
+.display-table .empty {
+    margin-bottom: 2rem;
+    text-align: center;
+    background-color: var(--bg-color);
+    color: var(--black);
+    font-size: 2rem;
+    padding: 1.5rem;
+}
+
+.edit-form-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1100;
+    background-color: var(--dark-bg);
+    padding: 2rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.edit-form-container form {
+    width: 50rem;
+    border-radius: .5rem;
+    background-color: var(--white);
+    text-align: center;
+    padding: 1rem 2rem;
+    max-height: 99%;
+    overflow-y: auto;
+    height: 649px;
+
+}
+
+.edit-form-container form .box {
+    width: 100%;
+    background-color: var(--bg-color);
+    border-radius: .5rem;
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+    color: var(--black);
+    padding: 0.5rem 1.4rem;
+    text-transform: none;
+}
+.display-table {
+    margin-bottom: 3rem;
+}
+.search-form{
+    margin: 2rem;
+}
+.search{
+    height:49px;
+    margin: 0 10px;
+}
