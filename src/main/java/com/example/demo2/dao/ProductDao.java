@@ -19,14 +19,14 @@ public class ProductDao {
             Connection connection = conn.getConnection();
             PreparedStatement pstmt;
             if (key != null && !key.isEmpty()) {
-                String query = "SELECT * FROM products WHERE id LIKE ? OR name LIKE ? OR nd LIKE ? OR ndct_title LIKE ? OR ndct_text LIKE ? OR trinhdo LIKE ? OR khaigiang LIKE ? OR thoigian LIKE ? OR sotiethoc LIKE ? OR price LIKE ? OR title1 LIKE ? OR title2 LIKE ? OR title3 LIKE ?";
+                String query = "SELECT * FROM `products` WHERE id LIKE ? OR name LIKE ? OR nd LIKE ? OR ndct_title LIKE ? OR ndct_text LIKE ? OR trinhdo LIKE ? OR khaigiang LIKE ? OR thoigian LIKE ? OR sotiethoc LIKE ? OR price LIKE ? OR title1 LIKE ? OR title2 LIKE ? OR title3 LIKE ?";
                 pstmt = connection.prepareStatement(query);
                 String searchKey = "%" + key + "%";
                 for (int i = 1; i <= 13; i++) {
                     pstmt.setString(i, searchKey);
                 }
             } else {
-                String query = "SELECT * FROM products";
+                String query = "SELECT * FROM `products`";
                 pstmt = connection.prepareStatement(query);
             }
             ResultSet rs = pstmt.executeQuery();
@@ -58,7 +58,7 @@ public class ProductDao {
     }
     public Product getProductById(int id) {
         try {
-            String sql = "SELECT * FROM products WHERE id = ?";
+            String sql = "SELECT * FROM `products` WHERE id = ?";
             conn.initPrepar(sql);
             conn.getPreparedStatement().setInt(1, id);
             ResultSet rs = conn.executeSelect();
@@ -90,10 +90,10 @@ public class ProductDao {
     }
     public boolean deleteProductById(int id) {
         try {
-            String sql = "DELETE FROM products WHERE id = ?";
+            String sql = "DELETE FROM `products` WHERE id = ?";
             conn.initPrepar(sql);
             conn.getPreparedStatement().setInt(1, id);
-            conn.executeSelect();
+            conn.getPreparedStatement().executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -121,7 +121,7 @@ public class ProductDao {
             conn.getPreparedStatement().setString(13, product.getTitle2());
             conn.getPreparedStatement().setString(14, product.getTitle3());
             conn.getPreparedStatement().setInt(15, product.getId());
-            conn.executeSelect();
+            conn.getPreparedStatement().executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -132,7 +132,7 @@ public class ProductDao {
     }
     public boolean addProduct(Product product) {
         try {
-            String sql = "NSERT INTO products(name,image,nd,ndct_title,ndct_text,trinhdo,khaigiang,thoigian,sotiethoc,hocvien,price,title1,title2,title3) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO `products` (name,image,nd,ndct_title,ndct_text,trinhdo,khaigiang,thoigian,sotiethoc,hocvien,price,title1,title2,title3) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             conn.initPrepar(sql);
             conn.getPreparedStatement().setString(1, product.getName());
             conn.getPreparedStatement().setString(2, product.getImage());
@@ -148,7 +148,7 @@ public class ProductDao {
             conn.getPreparedStatement().setString(12, product.getTitle1());
             conn.getPreparedStatement().setString(13, product.getTitle2());
             conn.getPreparedStatement().setString(14, product.getTitle3());
-            conn.executeSelect();
+            conn.getPreparedStatement().executeUpdate();
             return true;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -47,7 +47,7 @@
 <div class="container">
 
     <section>
-        <form action="/admin/course" method="post" class="add-form" enctype="multipart/form-data">
+        <form action="/admin/test" method="post" class="add-form" enctype="multipart/form-data">
             <h3>add a new product</h3>
             <input type="text" name="p_name" placeholder="enter the product name" class="box" required>
             <input type="file" name="p_image" accept="image/png,image/jpg,image/jpeg" class="box" required>
@@ -69,7 +69,7 @@
         </form>
     </section>
     <div class="search-form">
-        <form action="/admin/course" method="get">
+        <form action="/admin/test" method="get">
             <input type="text" name="search" placeholder="enter key to search" class="search box"
                    value="<%= (request.getParameter("search") != null) ? request.getParameter("search") : "" %>">
             <input type="submit" value="search" name="search_user" class="btn">
@@ -131,11 +131,11 @@
                 </td>
 
                 <td>
-                    <a href="/admin/course?delete=<%=row.getId()%>" class="delete-btn"
+                    <a href="/admin/test?delete=<%=row.getId()%>" class="delete-btn"
                        onclick="return confirm('are your sure you want to delete this?');"><i
                             class="fas fa-trash"></i>delete</a>
 
-                    <a href="/admin/course?edit=<%= row.getId() %>" class="option-btn"><i
+                    <a href="/admin/test?edit=<%= row.getId() %>" class="option-btn"><i
                             class="fas fa-edit"></i>update</a>
                 </td>
             </tr>
@@ -161,7 +161,7 @@
         <script>
             document.querySelector('.edit-form-container').style.display = 'flex';
         </script>
-        <form action="/admin/course" method="post" enctype="multipart/form-data">
+        <form action="/admin/test" method="post" enctype="multipart/form-data">
             <img src="<%=request.getContextPath()%>/public/img/<%=editProduct.getImage()%>" height="200" alt="">
             <input type="hidden" name="update_p_id" value="<%=editProduct.getId()%>">
             <input type="text" class="box" required name="update_p_name" value="<%=editProduct.getName()%>">

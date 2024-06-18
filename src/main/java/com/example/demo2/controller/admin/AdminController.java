@@ -1,4 +1,4 @@
-package com.example.demo2.controller;
+package com.example.demo2.controller.admin;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,11 +8,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 
-@WebServlet(name = "adminOrder", urlPatterns = "/admin/admin_order")
-public class AdminOrderController extends HttpServlet {
+@WebServlet(name = "admin", urlPatterns = "/admin")
+public class AdminController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-    }
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.getRequestDispatcher("view/admin.jsp").forward(request, response);
     }
 }

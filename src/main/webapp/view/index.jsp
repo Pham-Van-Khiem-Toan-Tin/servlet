@@ -433,7 +433,7 @@
             <form action="" method="post">
                 <div class="card-deck">
                     <div class="card p-2 border-secondary mb-2">
-                        <img src="${pageContext.request.contextPath}/public/img/<?php echo $row['image']; ?>" class="card-img-top" height="250">
+                        <img src="${pageContext.request.contextPath}/public/image/<?php echo $row['image']; ?>" class="card-img-top" height="250">
                         <div class="card-body p-1">
                             <h4 class="card-title text-center" style="color:#e28800;"><?php echo $row['name']; ?></h4>
                             <div class="">
@@ -453,7 +453,6 @@
                         </div>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>
@@ -462,7 +461,7 @@
     </div>
 
 </section>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript">
     $(document).ready(function() {
 

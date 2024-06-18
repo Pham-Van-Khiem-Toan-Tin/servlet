@@ -1,4 +1,7 @@
-<%--
+<%@ page import="com.example.demo2.entity.Lesson" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.stream.Collector" %>
+<%@ page import="java.util.Optional" %><%--
   Created by IntelliJ IDEA.
   User: MSII
   Date: 6/16/2024
@@ -6,7 +9,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 
 
 <!DOCTYPE html>
@@ -17,16 +19,17 @@
     <title>Document</title>
     <!-- Style CSS -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&family=Sen:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,400;1,500;1,600;1,700;1,800;1,900&family=Sen:wght@700&display=swap"
+          rel="stylesheet">
     <!-- Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/public/css/style.css">
 </head>
 <body>
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 
 
 <!-- -->
@@ -35,8 +38,9 @@
         <div class="row">
             <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4">
                 <div class="vue-sticky-placeholder" style="padding-top: 70px; ">
-                    <div id="sticky" sticky-side="both"  class="tab-words vue-sticky-el bottom-sticky" style="width: 290px;">
-                        <div class="bg-tab-words" >
+                    <div id="sticky" sticky-side="both" class="tab-words vue-sticky-el bottom-sticky"
+                         style="width: 290px;">
+                        <div class="bg-tab-words">
                             <div class="title-list-tab-menu">
                                 <h3 class="title">DANH MỤC CHỦ ĐỀ</h3>
                             </div>
@@ -47,7 +51,7 @@
                                 <ul class="list-tab-words list-tab-library mCustomScrollbar wp-tab">
                                     <li>
                                         <a href="javascript:;" class="item-tab active"><span>Tất cả từ vựng</span>
-                                            <i  aria-hidden="true" class="fa fa-angle-right"></i>
+                                            <i aria-hidden="true" class="fa fa-angle-right"></i>
                                         </a>
                                     </li>
                                     <li>
@@ -119,59 +123,60 @@
                     <div class="tab-content">
                         <div id="tatca" class="container tab-pane active"><br>
                             <div class="row">
-                                <?php
-                    
-                    $select_products = mysqli_query($conn,"SELECT * FROM `baihoc`");
-                    if(mysqli_num_rows($select_products) > 0){
-                                while($fetch_product = mysqli_fetch_assoc($select_products )){
-
-                                ?>
+                                <%
+                                    List<Lesson> lessonList = (List<Lesson>) request.getAttribute("lessonList");
+                                    if (lessonList != null && !lessonList.isEmpty()) {
+                                        for (Lesson row : lessonList) {
+                                %>
                                 <div class="product_list col-lg-6">
                                     <div class="card mb-3" style="max-width: 800px;">
                                         <div class="row ">
                                             <div class="col-md-4">
-                                                <img src="${pageContext.request.contextPath}/public/image/<?php echo $fetch_product['image']; ?>" class="img_card img-fluid rounded-start" alt="...">
+                                                <img src="${pageContext.request.contextPath}/public/image/<%= row.getImage() %>"
+                                                     class="img_card img-fluid rounded-start" alt="...">
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
-                                                    <h6 class="card-title"><?php echo $fetch_product['name']; ?></h6>
-                                                    <p class="card-text"><?php echo $fetch_product['sotuvung']; ?></p>
+                                                    <h6 class="card-title"><%= row.getName() %>
+                                                    </h6>
+                                                    <p class="card-text"><%= row.getSotuvung() %>
+                                                    </p>
                                                     <div class="sub-info">
-                                                        <span class="leve-info active-a"><?php echo $fetch_product['trinhdo']; ?></span>
+                                                        <span class="leve-info active-a"><%= row.getTrinhdo() %></span>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <?php 
-                  }
-                  }
-                ?>
+                                <%
+                                        }
+                                    }
+                                %>
 
                             </div>
                         </div>
                         <div id="a1" class="container tab-pane fade"><br>
                             <div class="row">
-                                <?php
-                    
-                    $select_products = mysqli_query($conn,"SELECT * FROM `baihoc` WHERE trinhdo='A1' " );
-                    if(mysqli_num_rows($select_products) > 0){
-                                while($fetch_product = mysqli_fetch_assoc($select_products )){
-
-                                ?>
+                                <%
+                                    Lesson lesson1 = lessonList.stream().filter(item -> item.getTrinhdo().equals("A1")).findFirst().orElse(null);
+                                    if (lesson1 != null) {
+                                %>
                                 <div class="product_list col-lg-6">
                                     <div class="card mb-3" style="max-width: 800px;">
                                         <div class="row ">
                                             <div class="col-md-4">
-                                                <img src="${pageContext.request.contextPath}/public/image/gd.jpg" class="img_card img-fluid rounded-start" alt="...">
+                                                <img src="${pageContext.request.contextPath}/public/image/<%= lesson1.getImage() %>"
+                                                     class="img_card img-fluid rounded-start" alt="...">
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">[A1.1 Bài 5 ] Gia đình</h6>
-                                                    <p class="card-text">16 tu vung.</p>
+                                                    <h6 class="card-title"><%= lesson1.getName() %>
+                                                    </h6>
+                                                    <p class="card-text"><%= lesson1.getSotuvung() %>
+                                                    </p>
                                                     <div class="sub-info">
-                                                        <span class="leve-info active-a">A1</span>
+                                                        <span class="leve-info active-a"><%= lesson1.getTrinhdo() %></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -179,34 +184,34 @@
                                     </div>
                                 </div>
 
-                                <?php 
-                }
-                }
-              ?>
+                                <%
+                                    }
+
+                                %>
                             </div>
 
                         </div>
                         <div id="a2" class="container tab-pane fade"><br>
                             <div class="row">
-                                <?php
-                    
-                    $select_products = mysqli_query($conn,"SELECT * FROM `baihoc` WHERE trinhdo='A2' " );
-                    if(mysqli_num_rows($select_products) > 0){
-                                while($fetch_product = mysqli_fetch_assoc($select_products )){
-
-                                ?>
+                                <%
+                                    Lesson lesson2 = lessonList.stream().filter(item -> item.getTrinhdo().equals("A2")).findFirst().orElse(null);
+                                    if (lesson2 != null) {
+                                %>
                                 <div class="product_list col-lg-6">
                                     <div class="card mb-3" style="max-width: 800px;">
                                         <div class="row ">
                                             <div class="col-md-4">
-                                                <img src="${pageContext.request.contextPath}/public/image/gd.jpg" class="img_card img-fluid rounded-start" alt="...">
+                                                <img src="${pageContext.request.contextPath}/public/image/<%= lesson1.getImage() %>"
+                                                     class="img_card img-fluid rounded-start" alt="...">
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">[A1.1 Bài 5 ] Gia đình</h6>
-                                                    <p class="card-text">16 tu vung.</p>
+                                                    <h6 class="card-title"><%= lesson1.getName() %>
+                                                    </h6>
+                                                    <p class="card-text"><%= lesson1.getSotuvung() %>
+                                                    </p>
                                                     <div class="sub-info">
-                                                        <span class="leve-info active-a">A1</span>
+                                                        <span class="leve-info active-a"><%= lesson1.getTrinhdo() %></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -214,34 +219,34 @@
                                     </div>
                                 </div>
 
-                                <?php 
-                }
-                }
-              ?>
+                                <%
+                                    }
+
+                                %>
                             </div>
 
                         </div>
                         <div id="b1" class="container tab-pane fade"><br>
                             <div class="row">
-                                <?php
-                    
-                    $select_products = mysqli_query($conn,"SELECT * FROM `baihoc` WHERE trinhdo='B1' " );
-                    if(mysqli_num_rows($select_products) > 0){
-                                while($fetch_product = mysqli_fetch_assoc($select_products )){
-
-                                ?>
+                                <%
+                                    Lesson lesson3 = lessonList.stream().filter(item -> item.getTrinhdo().equals("B1")).findFirst().orElse(null);
+                                    if (lesson3 != null) {
+                                %>
                                 <div class="product_list col-lg-6">
                                     <div class="card mb-3" style="max-width: 800px;">
                                         <div class="row ">
                                             <div class="col-md-4">
-                                                <img src="${pageContext.request.contextPath}/public/image/gd.jpg" class="img_card img-fluid rounded-start" alt="...">
+                                                <img src="${pageContext.request.contextPath}/public/image/<%= lesson3.getImage() %>"
+                                                     class="img_card img-fluid rounded-start" alt="...">
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">[A1.1 Bài 5 ] Gia đình</h6>
-                                                    <p class="card-text">16 tu vung.</p>
+                                                    <h6 class="card-title"><%= lesson3.getName() %>
+                                                    </h6>
+                                                    <p class="card-text"><%= lesson3.getSotuvung() %>
+                                                    </p>
                                                     <div class="sub-info">
-                                                        <span class="leve-info active-a">A1</span>
+                                                        <span class="leve-info active-a"><%= lesson3.getTrinhdo() %></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -249,34 +254,69 @@
                                     </div>
                                 </div>
 
-                                <?php 
-                }
-                }
-              ?>
+                                <%
+                                    }
+
+                                %>
+                            </div>
+
+                        </div>
+                        <div id="b2" class="container tab-pane fade"><br>
+                            <div class="row">
+                                <%
+                                    Lesson lesson4 = lessonList.stream().filter(item -> item.getTrinhdo().equals("B2")).findFirst().orElse(null);
+                                    if (lesson4 != null) {
+                                %>
+                                <div class="product_list col-lg-6">
+                                    <div class="card mb-3" style="max-width: 800px;">
+                                        <div class="row ">
+                                            <div class="col-md-4">
+                                                <img src="${pageContext.request.contextPath}/public/image/<%= lesson4.getImage() %>"
+                                                     class="img_card img-fluid rounded-start" alt="...">
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="card-body">
+                                                    <h6 class="card-title"><%= lesson4.getName() %>
+                                                    </h6>
+                                                    <p class="card-text"><%= lesson4.getSotuvung() %>
+                                                    </p>
+                                                    <div class="sub-info">
+                                                        <span class="leve-info active-a"><%= lesson4.getTrinhdo() %></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <%
+                                    }
+
+                                %>
                             </div>
 
                         </div>
                         <div id="c" class="container tab-pane fade"><br>
                             <div class="row">
-                                <?php
-                    
-                    $select_products = mysqli_query($conn,"SELECT * FROM `baihoc` WHERE trinhdo='A1' " );
-                    if(mysqli_num_rows($select_products) > 0){
-                                while($fetch_product = mysqli_fetch_assoc($select_products )){
-
-                                ?>
+                                <%
+                                    Lesson lesson5 = lessonList.stream().filter(item -> item.getTrinhdo().equals("C")).findFirst().orElse(null);
+                                    if (lesson5 != null) {
+                                %>
                                 <div class="product_list col-lg-6">
                                     <div class="card mb-3" style="max-width: 800px;">
                                         <div class="row ">
                                             <div class="col-md-4">
-                                                <img src="${pageContext.request.contextPath}/public/image/gd.jpg" class="img_card img-fluid rounded-start" alt="...">
+                                                <img src="${pageContext.request.contextPath}/public/image/<%= lesson5.getImage() %>"
+                                                     class="img_card img-fluid rounded-start" alt="...">
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="card-body">
-                                                    <h6 class="card-title">[A1.1 Bài 5 ] Gia đình</h6>
-                                                    <p class="card-text">16 tu vung.</p>
+                                                    <h6 class="card-title"><%= lesson5.getName() %>
+                                                    </h6>
+                                                    <p class="card-text"><%= lesson5.getSotuvung() %>
+                                                    </p>
                                                     <div class="sub-info">
-                                                        <span class="leve-info active-a">C</span>
+                                                        <span class="leve-info active-a"><%= lesson5.getTrinhdo() %></span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -284,10 +324,10 @@
                                     </div>
                                 </div>
 
-                                <?php 
-                }
-                }
-              ?>
+                                <%
+                                    }
+
+                                %>
                             </div>
 
                         </div>
@@ -300,7 +340,7 @@
 </section>
 
 <!-- -->
-<%@include file="footer.jsp"%>
+<%@include file="footer.jsp" %>
 
 </body>
 </html>

@@ -55,7 +55,7 @@
                 <button type="submit" class="btn btn-primary" id="liveAlertBtn" data-bs-toggle="tooltip" title="Submit right now!" name="dangnhap">Đăng nhập</button>
                 <div id="liveAlertPlaceholder"></div>
                 <br>
-                <span>Bạn chưa có tài khoản? Đăng ký <a href="/" style="color: red;"><u>tại đây</u></a></span>
+                <span>Bạn chưa có tài khoản? Đăng ký <a href="/register" style="color: red;"><u>tại đây</u></a></span>
 
             </div>
 

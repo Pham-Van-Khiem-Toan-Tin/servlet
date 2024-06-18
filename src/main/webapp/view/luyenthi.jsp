@@ -23,7 +23,7 @@
 
 </head>
 <body>
-<div="fb-root" class="fb-reset">
+<div id="fb-root" class="fb-reset">
 <div style="position: absolute; top: -10000px; width: 0px; height: 0px;">
     <div></div>
 </div>
@@ -654,9 +654,9 @@
                     </div>
                     <div class="item--img">
                         <div class="badge-red">
-                            <a href=""><img src="/img-change/badge2.png" alt=""></a>
+                            <a href=""><img src="${pageContext.request.contextPath}/public/image/img-change/badge2.png" alt=""></a>
                         </div>
-                        <div class="badge-blue"><a href=""><img src="/img-change/badge1.png" alt=""></a></div>
+                        <div class="badge-blue"><a href=""><img src="${pageContext.request.contextPath}/public/image/img-change/badge1.png" alt=""></a></div>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-5 col-lg-3 col-pt">
@@ -676,8 +676,8 @@
                 <div class="col-12 col-sm-6 col-md-7 col-lg-2 mt-foter">
                     <h3 class="title__footer" style="text-transform: uppercase;">Thanh toán</h3>
                     <div class="list--card">
-                        <div class="list--card--footer"><img src="z5019870352972_50d7c23eacbc3a9dc77d9684ad47c574.jpg" alt=""></div>
-                        <div class="list--card--footer"><img src="z5019874444318_4da4772f8479b5974c8659fb1869b44f.jpg" alt=""></div>
+                        <div class="list--card--footer"><img src="${pageContext.request.contextPath}/public/imagez5019870352972_50d7c23eacbc3a9dc77d9684ad47c574.jpg" alt=""></div>
+                        <div class="list--card--footer"><img src="${pageContext.request.contextPath}/public/imagez5019874444318_4da4772f8479b5974c8659fb1869b44f.jpg" alt=""></div>
                     </div>
                 </div>
                 <div class="col-12 col-sm-6 col-md-5 col-lg-3">

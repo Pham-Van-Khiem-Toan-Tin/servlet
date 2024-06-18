@@ -21,7 +21,7 @@ public class HomeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Product> productList = productDao.getAllProduct("");
         request.setAttribute("productList", productList);
-        List<Blog> blogList = blogDao.getAllBlog();
+        List<Blog> blogList = blogDao.getAllBlog(null);
         request.setAttribute("blogList", blogList);
         request.getRequestDispatcher("view/index.jsp").forward(request, response);
     }

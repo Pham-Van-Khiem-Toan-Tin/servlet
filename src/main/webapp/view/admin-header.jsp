@@ -13,27 +13,27 @@
             <div class="collapse navbar-collapse" id="collapsibleNavbar col-12">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/admin_course">Khóa học</a>
+                        <a class="nav-link" href="/admin/course">Khóa học</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin/admin_order">Đơn hàng</a>
+                        <a class="nav-link" href="/admin/order">Đơn hàng</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin_user">User</a>
+                        <a class="nav-link" href="/admin/user">User</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin_blog">Blog</a>
+                        <a class="nav-link" href="/admin/blog">Blog</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin_test">Bài thi</a>
+                        <a class="nav-link" href="/admin/test">Bài thi</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/admin_lesson">Bài học</a>
+                        <a class="nav-link" href="/admin/lesson">Bài học</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"><i class="fa-solid fa-user" style="margin-right:5px"></i>Admin</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="/admin">Thoát</a></li>
+                            <li><a class="dropdown-item" href="/">Thoát</a></li>
                         </ul>
                     </li>
                 </ul>

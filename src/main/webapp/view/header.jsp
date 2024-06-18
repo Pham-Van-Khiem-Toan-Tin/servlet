@@ -19,24 +19,24 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Khoa hoc</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="course.php">Khoa hoc thanh thieu nien</a></li>
-                            <li><a class="dropdown-item" href="course2.php">Khoa luyen thi B1</a></li>
-                            <li><a class="dropdown-item" href="course3.php">Khoa hoc dac biet</a></li>
-                            <li><a class="dropdown-item" href="goihoc.php">Goi hoc</a></li>
+                            <li><a class="dropdown-item" href="/course">Khoa hoc thanh thieu nien</a></li>
+                            <li><a class="dropdown-item" href="/course2">Khoa luyen thi B1</a></li>
+                            <li><a class="dropdown-item" href="/course3">Khoa hoc dac biet</a></li>
+                            <li><a class="dropdown-item" href="/goihoc">Goi hoc</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Tu dien</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="thuvien.php" role="button" data-bs-toggle="dropdown">Thu vien</a>
+                        <a class="nav-link dropdown-toggle" href="/thuvien" role="button" data-bs-toggle="dropdown">Thu vien</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="thuvien.php">Tu vung</a></li>
-                            <li><a class="dropdown-item" href="nguphap.php">Ngu Phap</a></li>
+                            <li><a class="dropdown-item" href="/thuvien">Tu vung</a></li>
+                            <li><a class="dropdown-item" href="/nguphap">Ngu Phap</a></li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Luyen Thi</a>
+                        <a class="nav-link" href="/luyenthi">Luyen Thi</a>
                     </li>
 
                     <form class="search d-flex" action="" method="get">
